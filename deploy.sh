@@ -21,5 +21,7 @@ while read CMD; do
 	ip=$(echo $CMD | awk '{print $1}')
 	host=$(echo $CMD | awk '{print $2}')
 	sudo bash -c "echo $CMD >>/etc/hosts"
-	deploy-host $host
+	deploy-host $host &
 done
+
+wait
