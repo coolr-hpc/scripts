@@ -51,11 +51,14 @@ EOF
 	ssh $host chmod +x run-node.sh
 }
 
-while read CMD; do
-	host=$(echo $CMD | awk '{print $2}')
+hosts=$( awk '{print $2}' )
+
+echo $hosts
+
+for host in $hosts; do
 	set-script $host
-	ssh $host ./run-node.sh 0 &
-	ssh $host ./run-node.sh 1 &
+	ssh $host ./run-node.sh 0 </dev/null &
+	ssh $host ./run-node.sh 1 </dev/null &
 done
 
 wait
