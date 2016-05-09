@@ -15,6 +15,7 @@ function deploy-host {
 
 	ssh cc@$hname "sudo insmod xstat.ko"
 	ssh cc@$hname "sudo echo on >/sys/class/xstat/ctrl"
+	ssh cc@$hname "sudo echo 500 >/sys/class/xstat/period"
 }
 
 while read CMD; do
