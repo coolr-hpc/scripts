@@ -2,5 +2,5 @@
 
 ./deploy.sh <$1
 sleep 5s
-./run.sh <$1
+./run_cross_dual.sh <$1
 ./collect.sh <$1
